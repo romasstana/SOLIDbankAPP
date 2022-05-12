@@ -1,0 +1,50 @@
+package com.example.solidbankapp;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MemoryAccountDAO implements AccountDAO{
+    List<Account> accountList = new ArrayList<>();
+    @Override
+    public List<Account> getClientAccounts(String clientID) {
+        return accountList;
+    }
+
+    @Override
+    public void createNewAccount(Account account) {
+        accountList.add(account);
+    }
+
+    @Override
+    public void updateAccount(Account account) {
+
+    }
+
+    @Override
+    public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
+        List<Account> list= new ArrayList<>();
+        for(Account s: accountList){
+            if(s.getClientID().equals(clientID)){
+                list.add(s);
+                return list;
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
+        return null;
+    }
+
+    @Override
+    public Account getClientAccount(String clientID, String accountID) {
+        List<Account> list= new ArrayList<>();
+        for(Account s: accountList){
+            if(s.getId().equals(accountID)){
+                return s;
+            }
+        }
+        return null;
+    }
+}
