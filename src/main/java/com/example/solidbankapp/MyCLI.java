@@ -20,7 +20,8 @@ public class MyCLI implements CLIUI{
     }
 
     public double requestClientAmount(){
-        System.out.print(scanner.nextLine());
+        System.out.println("Type amount of money");
+//        System.out.print(scanner.nextLine());
         String amount = scanner.nextLine();
         return Double.parseDouble(amount);
     }

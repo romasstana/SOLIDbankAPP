@@ -12,6 +12,7 @@ public class AccountDepositServiceImpl implements  AccountDepositService{
 
     public void deposit(double amount, Account account){
         account.setBalance(account.getBalance()+amount);
-
+        String str = String.format("%.2f", amount);
+        System.out.println(str + "$ transferred to " + account.getId() + " account");
     }
 }
