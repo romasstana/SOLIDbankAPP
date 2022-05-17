@@ -35,6 +35,7 @@ public class SoliDbankAppApplication implements CommandLineRunner {
         System.out.printf("Enter operation number: \n");
         System.out.printf(helpMessage);
         while(running){
+            try {
             switch(myCLI.getScanner().nextLine()){
 
                 case "1":
@@ -64,10 +65,12 @@ public class SoliDbankAppApplication implements CommandLineRunner {
                     System.out.printf("Application Closed\n");
                     running = false;
                     break;
-
                 default:
-                    System.out.printf("Command not recognized!\n");
-                    break;
+                    System.out.println("command not recognized\n");
+                }
+            }
+            catch (Exception e){
+                System.out.println("exception!");
             }
         }
         myCLI.getScanner().close();
