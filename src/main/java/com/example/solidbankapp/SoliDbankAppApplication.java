@@ -52,6 +52,7 @@ public class SoliDbankAppApplication implements CommandLineRunner {
                     break;
 
                 case "4":
+                    System.out.println("Type account ID");
                     transactionWithdrawCLI.withdrawMoney(clientID);
                     break;
 

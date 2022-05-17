@@ -11,9 +11,7 @@ public class TransactionWithdraw {
         this.accountWithdrawService = accountWithdrawService;
         this.transactionDAO = transactionDAO;
     }
-    void execute(AccountWithdraw accountWithdraw, AccountWithdraw accountWithdraw2, double amount){
 
-    }
     void execute(AccountWithdraw accountWithdraw, double amount){
         accountWithdrawService.withdraw(amount, accountWithdraw);
     }

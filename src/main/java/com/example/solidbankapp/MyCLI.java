@@ -20,14 +20,16 @@ public class MyCLI implements CLIUI{
     }
 
     public double requestClientAmount(){
-        return 0;
+        System.out.print(scanner.nextLine());
+        String amount = scanner.nextLine();
+        return Double.parseDouble(amount);
     }
     public String requestClientAccountNumber(){
-        return "";
+        return scanner.nextLine();
     }
     @Override
     public AccountType requestAccountType(){
-        switch(scanner.next()){
+        switch(scanner.nextLine()){
             case "FIXED": return AccountType.FIXED;
             case "CHECKING":  return AccountType.CHECKING;
             case "SAVING":  return AccountType.SAVING;

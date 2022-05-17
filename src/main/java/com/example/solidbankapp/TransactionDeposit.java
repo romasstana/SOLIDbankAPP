@@ -15,7 +15,7 @@ public class TransactionDeposit {
     void execute(AccountWithdraw accountWithdraw, AccountWithdraw accountWithdraw2, double amount){
 
     }
-    void execute(AccountWithdraw accountWithdraw, double amount){
-        accountDepositService.deposit(amount, accountWithdraw);
+    void execute(Account account, double amount){
+        accountDepositService.deposit(amount, account);
     }
 }

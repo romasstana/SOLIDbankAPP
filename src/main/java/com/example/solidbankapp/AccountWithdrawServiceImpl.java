@@ -12,6 +12,9 @@ public class AccountWithdrawServiceImpl implements  AccountWithdrawService{
     }
 
     public void withdraw(double amount, AccountWithdraw account){
-        account.setBalance(account.getBalance()-amount);
+        double balance = account.getBalance();
+        if(balance>=amount){
+        account.setBalance(balance-amount);
+        }
     }
 }

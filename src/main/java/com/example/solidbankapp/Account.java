@@ -51,9 +51,9 @@ public class Account {
 
     @Override
     public String toString() {
-        String accountNumber = String.format("%03d%06d", 1, Integer.parseInt(id));
+
         return "Account{" +
-                ", id='" + accountNumber + '\'' +
+                ", id='" + id + '\'' +
                 ", clientID='" + clientID + '\'' +
                 ", balance=" + balance +
                 '}';

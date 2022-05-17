@@ -37,7 +37,7 @@ public class MemoryAccountDAO implements AccountDAO{
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
         for(Account accW: accountList){
-            if(accW.getId().equals(accountID) && accW.isWithdrawAllowed()){
+            if(accW.getId().equals(accountID)){
                 return (AccountWithdraw) accW;
             }
         }

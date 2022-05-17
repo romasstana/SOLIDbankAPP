@@ -10,7 +10,7 @@ public class AccountDepositServiceImpl implements  AccountDepositService{
         this.accountDAO = accountDAO;
     }
 
-    public void deposit(double amount, AccountWithdraw account){
+    public void deposit(double amount, Account account){
         account.setBalance(account.getBalance()+amount);
 
     }
