@@ -1,5 +1,8 @@
 package com.example.solidbankapp;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AccountBasicCLI{
     CreateAccountOperationUI createAccountOperationUI;
     BankCore bankCore;
@@ -11,10 +14,10 @@ public class AccountBasicCLI{
         this.accountListing = accountListing;
     }
 
-    void createAccountRequest(String clientID){
+    public void createAccountRequest(String clientID){
         bankCore.createNewAccount(createAccountOperationUI.requestAccountType(),clientID);
     }
-    void getAccounts(String clientID){
+    public void getAccounts(String clientID){
         System.out.println(accountListing.getClientAccounts(clientID));
     }
 

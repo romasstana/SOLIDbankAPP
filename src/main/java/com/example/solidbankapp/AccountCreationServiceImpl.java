@@ -1,5 +1,8 @@
 package com.example.solidbankapp;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AccountCreationServiceImpl implements AccountCreationService{
     AccountDAO accountDAO;
 
@@ -12,15 +15,15 @@ public class AccountCreationServiceImpl implements AccountCreationService{
         Account account = null;
         switch (accountType){
             case FIXED:
-                account = new FixedAccount(accountType,String.valueOf(bankID) , clientID, 0, false);
+                account = new FixedAccount(accountType,String.valueOf(accountID) , clientID, 0, false);
                 System.out.println("Bank account created");
                 break;
             case CHECKING:
-                account = new CheckingAccount(accountType, String.valueOf(bankID), clientID, 0, true);
+                account = new CheckingAccount(accountType, String.valueOf(accountID), clientID, 0, true);
                 System.out.println("Bank account created");
                 break;
             case SAVING :
-                account = new SavingAccount(accountType, String.valueOf(bankID), clientID, 0, true);
+                account = new SavingAccount(accountType, String.valueOf(accountID), clientID, 0, true);
                 System.out.println("Bank account created");
                 break;
         }

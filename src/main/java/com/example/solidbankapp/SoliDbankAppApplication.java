@@ -1,55 +1,74 @@
 package com.example.solidbankapp;
 
+
+import com.example.solidbankapp.AccountBasicCLI;
+import com.example.solidbankapp.MyCLI;
+import com.example.solidbankapp.TransactionDepositCLI;
+import com.example.solidbankapp.TransactionWithdrawCLI;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Scanner;
 
 @SpringBootApplication
-public class SoliDbankAppApplication {
+public class SoliDbankAppApplication implements CommandLineRunner {
+    @Autowired
+    private ApplicationContext context;
 
     public static void main(String[] args) {
-
-
-        ApplicationContext context = new ClassPathXmlApplicationContext("props.xml");
-        AccountBasicCLI accountBasicCLI = context.getBean("accountBasicCLI", AccountBasicCLI.class);
-
-        MyCLI mycli= new MyCLI();
-        String clientID = "1";
-        System.out.print("Welcome to CLI bank service. \n " +
-                "Enter operation number:\n " +
-                "1 - show accounts \n " +
-                "2 - create account \n " +
-                "3 - deposit \n 4 - withdraw" +
-                " \n 5- transfer \n " +
-                "6 - this message \n " +
-                "7 - exit\n");
-        while(true){
-
-            String input=mycli.scanner.nextLine();
-            if(input.equals("1")){
-                accountBasicCLI.getAccounts(clientID);
-            }
-            else if(input.equals("2")){
-                System.out.print("Choose account type\n [CHECKING, SAVING, FIXED]\n");
-                accountBasicCLI.createAccountRequest("1");
-            } else if (input.equals("6")) {
-                System.out.print("Welcome to CLI bank service. \n " +
-                        "Enter operation number:\n " +
-                        "1 - show accounts \n " +
-                        "2 - create account \n " +
-                        "3 - deposit \n " +
-                        "4 - withdraw \n " +
-                        "5- transfer \n " +
-                        "6 - this message \n" +
-                        " 7 - exit\n");
-            } else if (input.equals("7")) {
-                break;
-            }
-        }
+        SpringApplication.run(SoliDbankAppApplication.class);
     }
 
+    @Override
+    public void run(String... arg0) throws Exception {
+        boolean running = true;
+        String clientID = "1";
 
+        MyCLI myCLI = context.getBean(MyCLI.class);
+        AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
+        TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
+        TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+
+        String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
+        System.out.printf("Welcome to CLI bank service\n");
+        System.out.printf("Enter operation number: \n");
+        System.out.printf(helpMessage);
+        while(running){
+            switch(myCLI.getScanner().nextLine()){
+
+                case "1":
+                    accountBasicCLI.getAccounts(clientID);
+                    break;
+
+                case "2":
+                    System.out.print("Choose account type\n [CHECKING, SAVING, FIXED]\n");
+                    accountBasicCLI.createAccountRequest(clientID);
+                    break;
+
+                case "3":
+                    System.out.println("Type account ID");
+                    transactionDepositCLI.depositMoney(clientID);
+                    break;
+
+                case "4":
+                    transactionWithdrawCLI.withdrawMoney(clientID);
+                    break;
+
+                case "6":
+                    System.out.printf(helpMessage);
+                    break;
+
+                case "7":
+                    System.out.printf("Application Closed\n");
+                    running = false;
+                    break;
+
+                default:
+                    System.out.printf("Command not recognized!\n");
+                    break;
+            }
+        }
+        myCLI.getScanner().close();
+    }
 }

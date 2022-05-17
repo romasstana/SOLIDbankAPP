@@ -1,7 +1,10 @@
 package com.example.solidbankapp;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class MyCLI implements CLIUI{
     Scanner scanner;
 
@@ -11,6 +14,11 @@ public class MyCLI implements CLIUI{
     MyCLI() {
         this.scanner = new Scanner(System.in);
     }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
     public double requestClientAmount(){
         return 0;
     }

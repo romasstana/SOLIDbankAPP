@@ -1,8 +1,10 @@
 package com.example.solidbankapp;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class MemoryAccountDAO implements AccountDAO{
     List<Account> accountList = new ArrayList<>();
     @Override
@@ -34,6 +36,11 @@ public class MemoryAccountDAO implements AccountDAO{
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
+        for(Account accW: accountList){
+            if(accW.getId().equals(accountID) && accW.isWithdrawAllowed()){
+                return (AccountWithdraw) accW;
+            }
+        }
         return null;
     }
 

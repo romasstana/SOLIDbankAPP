@@ -1,8 +1,10 @@
 package com.example.solidbankapp;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class AccountListingServiceImpl implements AccountListingService {
     AccountDAO accountDAO;
 
@@ -17,7 +19,7 @@ public class AccountListingServiceImpl implements AccountListingService {
 
     @Override
     public AccountWithdraw getClientWithdrawAccount(String clientID, String accountID) {
-        return null;
+        return accountDAO.getClientWithdrawAccount(clientID, accountID);
     }
 
     @Override
