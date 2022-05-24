@@ -1,8 +1,10 @@
 package com.example.solidbankapp;
 
+import org.springframework.data.annotation.Id;
+
 public class Account {
     private AccountType accountType;
-    private String id;
+    private @Id String id;
     private String clientID;
     private double balance;
     private boolean withdrawAllowed;
