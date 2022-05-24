@@ -74,5 +74,6 @@ public class SoliDbankAppApplication implements CommandLineRunner {
             }
         }
         myCLI.getScanner().close();
+
     }
 }
