@@ -1,4 +1,6 @@
-package com.example.solidbankapp;
+package com.example.solidbankapp.DAO;
+
+import com.example.solidbankapp.Transaction;
 
 import java.util.List;
 

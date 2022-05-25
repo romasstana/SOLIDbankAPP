@@ -1,11 +1,13 @@
 package com.example.solidbankapp;
 
+import com.example.solidbankapp.DAO.AccountDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountCreationServiceImpl implements AccountCreationService{
     AccountDAO accountDAO;
-
+    @Autowired
     public AccountCreationServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }

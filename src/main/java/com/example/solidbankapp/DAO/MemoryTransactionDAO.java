@@ -1,11 +1,11 @@
-package com.example.solidbankapp;
+package com.example.solidbankapp.DAO;
 
+import com.example.solidbankapp.Transaction;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 @Component
-public class MemoryTransactionDAO implements  TransactionDAO{
+public class MemoryTransactionDAO implements TransactionDAO {
     List<Transaction> transactions;
     @Override
     public List<Transaction> getTransactions() {
