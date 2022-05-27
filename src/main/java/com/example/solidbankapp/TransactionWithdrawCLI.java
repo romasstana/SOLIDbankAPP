@@ -1,9 +1,12 @@
 package com.example.solidbankapp;
 
+import com.example.solidbankapp.ACCOUNT.Account;
+import com.example.solidbankapp.LISTING.AccountListingService;
+import com.example.solidbankapp.WITHDRAW.AccountWithdraw;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class TransactionWithdrawCLI {
 
     TransactionWithdraw transactionWithdraw;
@@ -18,7 +21,9 @@ public class TransactionWithdrawCLI {
     public void withdrawMoney(String clientID){
         String accountId = withdrawDepositOperationCLIUI.requestClientAccountNumber();
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
-        AccountWithdraw accountWithdraw = accountListingService.getClientWithdrawAccount(clientID, accountId);
-        transactionWithdraw.execute(accountWithdraw, amount);
+        Account account = accountListingService.getClientAccount(clientID, accountId);
+
+        transactionWithdraw.execute(account, amount);
+
     }
 }

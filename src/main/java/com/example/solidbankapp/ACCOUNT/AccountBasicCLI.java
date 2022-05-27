@@ -1,5 +1,9 @@
-package com.example.solidbankapp;
+package com.example.solidbankapp.ACCOUNT;
 
+import com.example.solidbankapp.LISTING.AccountListingService;
+import com.example.solidbankapp.BankCore;
+import com.example.solidbankapp.CREATE.CreateAccountOperationUI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -7,7 +11,7 @@ public class AccountBasicCLI{
     CreateAccountOperationUI createAccountOperationUI;
     BankCore bankCore;
     AccountListingService accountListing;
-
+    @Autowired
     public AccountBasicCLI(CreateAccountOperationUI createAccountOperationUI, BankCore bankCore, AccountListingService accountListing) {
         this.createAccountOperationUI = createAccountOperationUI;
         this.bankCore = bankCore;

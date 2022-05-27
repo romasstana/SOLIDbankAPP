@@ -1,7 +1,13 @@
-package com.example.solidbankapp;
+package com.example.solidbankapp.LISTING;
+
+import com.example.solidbankapp.ACCOUNT.Account;
+import com.example.solidbankapp.ACCOUNT.AccountType;
+import com.example.solidbankapp.WITHDRAW.AccountWithdraw;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface AccountListingService {
     Account getClientAccount(String clientID, String accountID);
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);

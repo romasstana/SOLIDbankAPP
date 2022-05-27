@@ -1,10 +1,8 @@
 package com.example.solidbankapp;
 
 
-import com.example.solidbankapp.AccountBasicCLI;
-import com.example.solidbankapp.MyCLI;
-import com.example.solidbankapp.TransactionDepositCLI;
-import com.example.solidbankapp.TransactionWithdrawCLI;
+import com.example.solidbankapp.ACCOUNT.AccountBasicCLI;
+import com.example.solidbankapp.DAO.AccountDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
+//@EnableJdbcRepositories
+//@AllArgsConstructor
 public class SoliDbankAppApplication implements CommandLineRunner {
     @Autowired
     private ApplicationContext context;
@@ -29,6 +29,7 @@ public class SoliDbankAppApplication implements CommandLineRunner {
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
         TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+        AccountDAO accountDAO = context.getBean(AccountDAO.class);
 
         String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
         System.out.printf("Welcome to CLI bank service\n");
@@ -39,6 +40,8 @@ public class SoliDbankAppApplication implements CommandLineRunner {
             switch(myCLI.getScanner().nextLine()){
 
                 case "1":
+                    //System.out.println(accountDAO.getIds("FIXED"));
+                    //accountDAO.findAccountsByClientId(clientID);
                     accountBasicCLI.getAccounts(clientID);
                     break;
 
@@ -71,6 +74,7 @@ public class SoliDbankAppApplication implements CommandLineRunner {
             }
             catch (Exception e){
                 System.out.println("exception!");
+                e.printStackTrace();
             }
         }
         myCLI.getScanner().close();

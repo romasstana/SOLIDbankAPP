@@ -1,5 +1,6 @@
 package com.example.solidbankapp;
 
+import com.example.solidbankapp.ACCOUNT.AccountType;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;

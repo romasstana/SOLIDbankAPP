@@ -1,8 +1,8 @@
 //package com.example.solidbankapp.DAO;
 //
-//import com.example.solidbankapp.Account;
-//import com.example.solidbankapp.AccountType;
-//import com.example.solidbankapp.AccountWithdraw;
+//import com.example.solidbankapp.ACCOUNT.Account;
+//import com.example.solidbankapp.ACCOUNT.AccountType;
+//import com.example.solidbankapp.WITHDRAW.AccountWithdraw;
 //import com.example.solidbankapp.DAO.AccountDAO;
 //import org.springframework.stereotype.Component;
 //

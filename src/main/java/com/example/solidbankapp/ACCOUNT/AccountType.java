@@ -1,9 +1,9 @@
-package com.example.solidbankapp;
+package com.example.solidbankapp.ACCOUNT;
 
 
 public enum AccountType {
     FIXED,
     CHECKING,
-    SAVING
+    SAVING;
 
 }

@@ -1,10 +1,10 @@
 package com.example.solidbankapp.DAO;
 
-import com.example.solidbankapp.Transaction;
+import com.example.solidbankapp.TransactionDeposit;
 
 import java.util.List;
 
 public interface TransactionDAO {
-    List<Transaction> getTransactions();
-    void addTransaction(Transaction transaction);
+    List<TransactionDeposit.Transaction> getTransactions();
+    void addTransaction(TransactionDeposit.Transaction transaction);
 }
