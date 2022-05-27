@@ -32,7 +32,7 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
             account.setBalance(account.getBalance()-amount);
         String str = String.format("%.2f", amount);
         System.out.println(str+"$ transferred from " + account.getId() + " account");
-        accountDAO.updateAccount(account.getAccountType(), account.getId(), account.getClientId(), account.getBalance());
+        accountDAO.updateAccount(account.getId(), account.getClientId(), account.getBalance());
         }
     }
 }

@@ -17,12 +17,11 @@ public interface AccountDAO extends CrudRepository<Account, String> {
 
 //    List<Account> findAccountsByClientID(String clientID);
     @Modifying
-    @Query("INSERT INTO Account values (:id, :type, :clientId, :balance, :withdrawAllowed)")
-
+    @Query("INSERT INTO Account(id, account_type, client_id, balance, withdrawal_allowed) values (:id, :type, :clientId, :balance, :withdrawAllowed)")
     void createNewAccount(String id, String type, String clientId, double balance, boolean withdrawAllowed);
     @Modifying
-    @Query("UPDATE Account a SET a.id= :id, a.account_type=:type,a.client_id= :clientId,a.balance= :balance")
-    void updateAccount(String id, String type, String clientId, double balance);
+    @Query("UPDATE Account a SET a.balance = :balance where id=:accountId AND client_id=:clientId")
+    void updateAccount(String accountId, String clientId, double balance);
     //List<Account> getClientAccountsByType(String clientID, AccountType accountType);
     @Query("SELECT * FROM Account a WHERE a.id =:accountID AND a.client_id =:clientID AND a.withdrawal_allowed =true")
     Account getClientWithdrawAccount(String clientID, String accountID);
